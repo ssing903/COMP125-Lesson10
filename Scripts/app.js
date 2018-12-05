@@ -1,41 +1,31 @@
-/* main JavaScript file */
+// core module - IIFE
+(function() {
+  // App variables
+  let XHR;
 
 
-
-// IIFE - Immediately Invoked Function Expression
-//var app = {};
-
-/**
- * 
- * @description Object oriented javascript
- */
-
-(function () {
-  "use strict";
-  var xhr;
-
-  // we can use a named function instead of anoyomous
-  function readData() {
-      // 4 - data loaded           // everthing is ok
-    if ((xhr.readyState === 4) && (xhr.status === 200)) {
-      var addressbook = JSON.parse(xhr.responseText);
-     var contacts = addressbook.contacts;
-
-     contacts.forEach(element => {
-          console.log(element);
-     },this);
-    }
+  /**
+   * This function is used for Intialization
+   */
+  function Start() {
+    console.log(
+      `%c App Initializing...`,
+      "font-weight: bold; font-size: 20px;"
+    );
+    XHR = new XMLHttpRequest();
+    Main();
   }
 
-  function init() {
-        xhr = new XMLHttpRequest(); // step 1 -  create object
-         /* get data*/ xhr.open("GET", "Scripts/addressbook.json", true); // step 2 - open request
-         /* send data */ xhr.send(null); // step 3
-        xhr.addEventListener("readystatechange" , readData);// step 4 - wait for the file to load
+  /**
+   * This function is the where the main functionality for our
+   * web app is happening
+   */
+  function Main() {
+    console.log(`%c App Started...`, "font-weight: bold; font-size: 20px;");
+    XHR.addEventListener("readystatechange",function(){
+
+    })
   }
 
-
-
-  // call init when window finshing loading
-  window.addEventListener("load", init);
+  window.addEventListener("load", Start);
 })();
