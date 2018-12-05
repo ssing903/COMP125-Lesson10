@@ -1,0 +1,30 @@
+{
+    "contacts":
+    [
+        {
+            "name": "Sukhpartap Singh",
+            "email":"sukh@example.com"
+
+        },
+        {
+            "name": "Mary Jones",
+            "email":"Mary@example.com"
+
+        },
+        {
+            "name": "Jessica Jones",
+            "email":"Jessica@example.com"
+
+        },
+        {
+            "name": "Bruce Wayne",
+            "email":"Bruce@example.com"
+
+        },
+        {
+            "name": "Peter Parker",
+            "email":"Peter@example.com"
+
+        }
+    ]
+}

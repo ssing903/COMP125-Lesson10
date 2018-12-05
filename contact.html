@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Me</title>
+    <!-- CSS Section -->
+    <link rel="stylesheet" href="Scripts/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Scripts/lib/font-awesome/web-fonts-with-css/css/fontawesome.min.css">
+    <link rel="stylesheet" href="Content/app.css">
+</head>
+
+<body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                   </button>
+			 
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"> Home</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a class="nav-link" href="projects.html"> Projects</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a  class="nav-link" href="about.html"> About Me</a>
+                    </li>
+                    <li class="nav-item active" >
+                        <a class="nav-link" href="contact.html"> Contact Me</a>
+                    </li>
+               
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+    </nav>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-3 col-md-6">
+                <form id="contactForm" action=""  role="form">
+                    <h1>Contact Me</h1>
+
+                    <legend>Contact Form</legend>
+                
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" required>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" required>
+                    </div>
+                    
+    
+                    
+                    <div class="text-right">
+                        <a href="index.html" id="cancelButton" type="submit" class="btn btn-warning"> Cancel </a>                
+                        <button id="submitButton" type="submit" class="btn btn-primary"> Submit </button>
+                    </div>                
+                
+                </form>
+                
+    
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Section -->
+    <script src="Scripts/lib/jquery/dist/jquery.min.js"></script>
+    <script src="Scripts/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="Scripts/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "COMP125-Lesson5",
+  "description": "Bower installation",
+  "keywords": [
+    "Bower",
+    "Bootstrap"
+  ],
+  "authors": [
+    "Sukh"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "Scripts/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "bootstrap": "^4.1.1",
+    "font-awesome": "^5.0.10"
+  },
+  "main": "",
+  "homepage": ""
+}
