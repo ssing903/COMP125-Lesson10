@@ -1,32 +1,28 @@
 // core module - IIFE
 (function() {
   // App variables
-
-  // STEP 1 : create xhr variable 
-  
   let XHR;
+  let hash;
+  
 
-  function insertHtml(sourceURL,desTag){
-    let target = document.getElementsByTagName(desTag)[0];
-    // STEP 3 - Set up an event listner / handler that
-    // listens for a readystatechange and requires
-    // the readyState code to be "4" and the status to be "200"
+
+  function insertHTML(sourceURL, destTag) {
+    let target = document.getElementsByTagName(destTag)[0];
+    XHR = new XMLHttpRequest();
     XHR.addEventListener("readystatechange", function(){
-        if(XHR.status === 200){
-          if(XHR.readyState === 4 ) {
-            // responseText is the data we are recieving from the server
-            target.innerHTML = XHR.responseText;
-            console.log(XHR.responseText);
-          }
+      if(this.status === 200) {
+        if(this.readyState === 4)  {
+          target.innerHTML = this.responseText;
+          setActiveNavLink();
         }
-        
-      });
-       // STEP 4 - use the open method of the XHR object to send a GET request
-      // you need to send the URL information
-      XHR.open("GET", sourceURL);
-       // STEP 5 - complete the request with the send method
-      XHR.send();
+      }
+    });
+    XHR.open("GET", sourceURL);
+    XHR.send();
   }
+
+
+
 
   /**
    * This function is used for Intialization
@@ -37,8 +33,6 @@
       "font-weight: bold; font-size: 20px;"
     );
 
-    // step - instantiate an xmlhttprequest 
-    XHR = new XMLHttpRequest();
     Main();
   }
 
@@ -48,23 +42,44 @@
    */
   function Main() {
     console.log(`%c App Started...`, "font-weight: bold; font-size: 20px;");
-   //insertHtml("/Views/partials/header.html","header");
-   //insertHtml("/Views/partials/footer.html","footer");
+    
+    insertHTML("/Views/partials/header.html", "header");
 
-   $.get("/views/partials/header.html",function(data){
-    let target = document.getElementsByTagName("header")[0];
-    target.innerHTML = data;
-});
+    setPageContent("/Views/content/home.html");
 
-   $.get("/views/partials/footer.html",function(data){
-       let target = document.getElementsByTagName("footer")[0];
-       target.innerHTML = data;
-   });
+    insertHTML("/Views/partials/footer.html", "footer");
 
-   $.get("data.json",function(data){
-    console.log(data);
-});
+  }
+
+  function setPageContent(url) {
+    insertHTML(url, "main");
+  }
+
+  function Route() {
+    // sanitize the url - remove the #
+    hash = location.hash.slice(1);
+
+    document.title = hash;
+
+    // change the URL of my page
+    history.pushState("", document.title, "/" + hash.toLowerCase() + "/");
+
+    setPageContent("/Views/content/" + hash.toLowerCase() + ".html")
+  }
+
+  function setActiveNavLink() {
+    // clears the "active" class from each of the list items in the navigation
+    document.querySelectorAll("li.nav-item").forEach(function(listItem){
+      listItem.setAttribute("class", "nav-item");
+    });
+
+    // add the "active" class to the class attribute of the appropriate list item
+    document.getElementById(document.title).classList.add("active");
+
+
   }
 
   window.addEventListener("load", Start);
+
+  window.addEventListener("hashchange", Route);
 })();
