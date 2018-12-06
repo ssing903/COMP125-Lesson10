@@ -1,13 +1,14 @@
 {
-    "AddressBook" :[
+    "Contacts" :[
         {
             "name":"Sukh",
-            "number":"123345"
-            
+            "number":"123345",
+            "email":"123456"
         },
         {
             "name":"arjun",
-            "number":"123456"
-        }
+            "number":"123456",
+            "email":"123456"
+         }
     ]
 }

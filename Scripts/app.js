@@ -3,7 +3,8 @@
   // App variables
   let XHR;
   let hash;
-  
+  let addressbook;
+  let Contacts;
 
 
   function insertHTML(sourceURL, destTag) {
@@ -21,6 +22,22 @@
     XHR.send();
   }
 
+  function loadJson()
+  {
+    XHR = new XMLHttpRequest();
+    XHR.addEventListener("readystatechange", function(){
+      if(this.status === 200) {
+        if(this.readyState === 4)  {
+         addressbook = JSON.parse(this.responseText);
+         
+        }
+      }
+    });
+    XHR.open("GET", "data.json");
+    XHR.send();
+
+   
+  }
 
 
 
@@ -32,6 +49,8 @@
       `%c App Initializing...`,
       "font-weight: bold; font-size: 20px;"
     );
+
+    Contacts = [];
 
     Main();
   }
@@ -49,6 +68,17 @@
 
     insertHTML("/Views/partials/footer.html", "footer");
 
+    loadJson();
+
+    XHR.addEventListener("load",function(){
+      addressbook.Contacts.forEach(contact => {
+        let newContact = new objects.Contact(contact.name,contact.number,contact.number);
+        console.log(newContact);
+        Contacts.push(newContact)
+     });
+
+      console.log(Contacts);  
+    });
   }
 
   function setPageContent(url) {
@@ -62,7 +92,7 @@
     document.title = hash;
 
     // change the URL of my page
-    history.pushState("", document.title, "/" + hash.toLowerCase() + "/");
+    //    history.pushState("", document.title, "/" + hash.toLowerCase() + "/");
 
     setPageContent("/Views/content/" + hash.toLowerCase() + ".html")
   }
