@@ -1,0 +1,13 @@
+{
+    "AddressBook" :[
+        {
+            "name":"Sukh",
+            "number":"123345"
+            
+        },
+        {
+            "name":"arjun",
+            "number":"123456"
+        }
+    ]
+}
